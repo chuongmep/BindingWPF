@@ -2,20 +2,20 @@
 
 namespace BindingWPF
 {
-  internal  class RevitEvent  : IExternalEventHandler
+    internal class RevitEvent : IExternalEventHandler
 
-  {
-      public ViewModel viewModel { get; set; }
-      public void Execute(UIApplication uiapp)
-      {
+    {
+        public ViewModel viewModel { get; set; }
+        public void Execute(UIApplication uiapp)
+        {
 
-           viewModel.PickElement();
-           viewModel.RemoveElement();
-      }
+            viewModel.PickElement();
+            viewModel.RemoveElement();
+        }
 
-      public string GetName()
-      {
-          return "element";
-      }
+        public string GetName()
+        {
+            return "element";
+        }
     }
 }

@@ -35,6 +35,12 @@
                     Content="Remove Element"
                     Command="{Binding RemoveCommand}"
             />
+            <Button Grid.Row="1"
+                    FontSize="25"
+                    Background="DeepSkyBlue"
+                    Content="Move Element"
+                    Command="{Binding MoveCommand}"
+            />
         </StackPanel>
     </Grid>
 </Window>

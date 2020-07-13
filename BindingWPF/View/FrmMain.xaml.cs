@@ -20,7 +20,7 @@ namespace BindingWPF
     /// <summary>
     /// Interaction logic for FrmDemo.xaml
     /// </summary>
-    public partial class FrmDemo : Window
+    public partial class FrmDemo
     {
         private RevitEvent _revitEvent;
         ExternalEvent _myExternalEvent;

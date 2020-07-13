@@ -1,0 +1,40 @@
+﻿<Window x:Class="BindingWPF.FrmDemo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BindingWPF"
+             mc:Ignorable="d"
+             Topmost="True"
+             ResizeMode="NoResize"
+             Width="300"
+             Height="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+
+        
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="Padding" Value="8,3" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Grid.Row="1"
+                    FontSize="25"
+                    Background="DeepSkyBlue"
+                    Content="Pick Element"
+                    Command="{Binding PickCommand}"
+            />
+            <Button Grid.Row="1"
+                    FontSize="25"
+                    Background="DeepSkyBlue"
+                    Content="Remove Element"
+                    Command="{Binding RemoveCommand}"
+            />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+D:\API\BindingWPF\BindingWPF\bin\Debug\BindingWPF.dll
+D:\API\BindingWPF\BindingWPF\bin\Debug\BindingWPF.pdb
+D:\API\BindingWPF\BindingWPF\bin\Debug\RevitAPI.dll
+D:\API\BindingWPF\BindingWPF\bin\Debug\RevitAPIUI.dll
+D:\API\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.g.cs
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.cache
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.lref
+D:\API\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.baml
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.g.resources
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CoreCompileInputs.cache
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CopyComplete
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.dll
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.pdb

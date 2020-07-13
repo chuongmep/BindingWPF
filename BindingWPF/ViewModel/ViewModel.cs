@@ -30,6 +30,7 @@ namespace BindingWPF
             Reference r = UiDoc.Selection.PickObject(ObjectType.Element, "Pick a element");
             Element element = Doc.GetElement(r);
             TaskDialog.Show("Info", element.Name);
+            
         }
 
         public void RemoveElement()
@@ -38,8 +39,13 @@ namespace BindingWPF
             Element element = Doc.GetElement(r.ElementId);
             try
             {
-                element.Pinned = false;
-                Doc.Delete(element.Id);
+                using (Transaction tran = new Transaction(Doc))
+                {
+                    tran.Start("Start");
+                    element.Pinned = false;
+                    Doc.Delete(element.Id);
+                    tran.Commit();
+                }
             }
             catch (Exception )
             {

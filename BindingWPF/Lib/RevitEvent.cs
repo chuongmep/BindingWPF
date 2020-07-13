@@ -1,8 +1,6 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using BindingWPF;
+﻿using Autodesk.Revit.UI;
 
-namespace RevitAPISamPle
+namespace BindingWPF
 {
   internal  class RevitEvent  : IExternalEventHandler
 

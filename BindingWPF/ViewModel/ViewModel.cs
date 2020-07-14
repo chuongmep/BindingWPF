@@ -11,6 +11,9 @@ namespace BindingWPF
 {
     public class ViewModel : ViewModelBase
     {
+        private RevitEvent _revitEvent;
+        ExternalEvent _myExternalEvent;
+
         public Document Doc;
         public UIDocument UiDoc;
         public RelayCommand PickCommand { get; set; }
@@ -21,6 +24,9 @@ namespace BindingWPF
         {
             UiDoc = uidoc;
             Doc = uidoc.Document;
+            _revitEvent = new RevitEvent();
+            _myExternalEvent = ExternalEvent.Create(_revitEvent);
+
             PickCommand = new RelayCommand(x => PickElement(), x => true);
             RemoveCommand = new RelayCommand(x=>RemoveElement(),x=>true);
         }

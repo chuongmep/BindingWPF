@@ -22,18 +22,16 @@ namespace BindingWPF
     /// </summary>
     public partial class FrmDemo
     {
-        private RevitEvent _revitEvent;
-        ExternalEvent _myExternalEvent;
+       
         private ViewModel _ViewModel;
         public FrmDemo(ViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
             this._ViewModel = viewModel;
-            //Topmost = true;
-            _revitEvent = new RevitEvent();
-            _myExternalEvent = ExternalEvent.Create(_revitEvent);
-            _myExternalEvent.Raise();
+            Topmost = true;
+           
+           
         }
     }
 }

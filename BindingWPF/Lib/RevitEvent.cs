@@ -1,38 +1,42 @@
 ﻿using System;
+using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
 namespace BindingWPF
 {
-    internal class RevitEvent : IExternalEventHandler
+    public class RevitEvent : IExternalEventHandler
 
     {
-        public option op;
-        public ViewModel viewModel { get; set; }
+        public LogicElement logic { get; set; }
+        public Option Option { get; set; }
         public void Execute(UIApplication uiapp)
         {
-            switch (op)
+
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Application app = uiapp.Application;
+            Document doc = uidoc.Document;
+            Option = Option.Pick;
+            switch (Option)
             {
-                case option.pick:
-                    viewModel.PickElement();
+                case Option.Pick:
+                    logic.PickElement(uidoc);
                     break;
-                case option.remove:
-                    viewModel.RemoveElement();
+                case Option.Remove:
+                    logic.RemoveElement(uidoc,doc);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
-           
+            
             
         }
 
         public string GetName()
         {
-            return "element";
+            return "Do Job";
         }
+
+
+       
     }
 
-    enum  option
-    {
-        pick,remove
-    }
 }

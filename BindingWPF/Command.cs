@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Autodesk.Revit.ApplicationServices;
+using System.Windows.Forms;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using Application = Autodesk.Revit.ApplicationServices.Application;
 
 namespace BindingWPF
 {
@@ -20,11 +21,27 @@ namespace BindingWPF
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
-            ViewModel vm = new ViewModel(uidoc);
-            FrmDemo frmDemo = new FrmDemo(vm);
+            try
+            {
+                FrmMain window = new FrmMain();
+                {
+                    window.DataContext = new ViewModel(uidoc);
+                    window.Topmost = true;
+                };
+                window.Show();
+						
+                return Result.Succeeded;
+            }
 
-            frmDemo.Show();
-            return Result.Succeeded;
+            catch (Autodesk.Revit.Exceptions.OperationCanceledException)
+            {
+                return Result.Cancelled;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return Result.Failed;
+            }
 
         }
     }

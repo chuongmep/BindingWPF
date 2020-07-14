@@ -18,20 +18,15 @@ using BindingWPF;
 namespace BindingWPF
 {
     /// <summary>
-    /// Interaction logic for FrmDemo.xaml
+    /// Interaction logic for FrmMain.xaml
     /// </summary>
-    public partial class FrmDemo
+    public partial class FrmMain : Window
     {
        
-        private ViewModel _ViewModel;
-        public FrmDemo(ViewModel viewModel)
+        public FrmMain()
         {
             InitializeComponent();
-            DataContext = viewModel;
-            this._ViewModel = viewModel;
-            Topmost = true;
-           
-           
+          
         }
     }
 }

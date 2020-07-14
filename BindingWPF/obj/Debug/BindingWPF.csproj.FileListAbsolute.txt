@@ -1,3 +1,14 @@
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.dll
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.pdb
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.g.cs
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.cache
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.lref
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.baml
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.g.resources
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CoreCompileInputs.cache
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CopyComplete
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.dll
+F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.pdb
 D:\API\BindingWPF\BindingWPF\bin\Debug\BindingWPF.dll
 D:\API\BindingWPF\BindingWPF\bin\Debug\BindingWPF.pdb
 D:\API\BindingWPF\BindingWPF\bin\Debug\RevitAPI.dll
@@ -11,14 +22,4 @@ D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CoreCompileInputs.cache
 D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CopyComplete
 D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.dll
 D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.pdb
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.dll
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.pdb
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.g.cs
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.cache
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.lref
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.baml
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.g.resources
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CoreCompileInputs.cache
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CopyComplete
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.dll
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.pdb
+D:\API\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csprojAssemblyReference.cache

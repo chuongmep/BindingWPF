@@ -1,13 +1,15 @@
-﻿<Window x:Class="BindingWPF.FrmDemo"
+﻿<Window x:Class="BindingWPF.FrmMain"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:BindingWPF"
+             Name="Window"
              mc:Ignorable="d"
              Topmost="True"
              ResizeMode="NoResize"
              Width="300"
+             Title="WPFBindingCommand"
              Height="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -28,19 +30,36 @@
                     Background="DeepSkyBlue"
                     Content="Pick Element"
                     Command="{Binding PickCommand}"
+                    CommandParameter="{Binding ElementName=Window}"
             />
             <Button Grid.Row="1"
-                    FontSize="25"
-                    Background="DeepSkyBlue"
-                    Content="Remove Element"
-                    Command="{Binding RemoveCommand}"
-            />
+                                                                                                        FontSize="25"
+                                                                                                        Background="DeepSkyBlue"
+                                                                                                        Content="Remove Element"
+                                                                                                        Command="{Binding RemoveCommand}"
+                                                                                                        CommandParameter="{Binding ElementName=Window}"
+                                                                                                />
             <Button Grid.Row="1"
                     FontSize="25"
                     Background="DeepSkyBlue"
                     Content="Move Element"
                     Command="{Binding MoveCommand}"
             />
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="Padding" Value="8" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Grid.Row="1"
+                    FontSize="25"
+                    Background="DeepSkyBlue"
+                    Content="Cancel"
+                    Command="{Binding Close}" 
+                    CommandParameter="{Binding ElementName=Window}"/>
+
         </StackPanel>
     </Grid>
 </Window>

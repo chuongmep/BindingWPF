@@ -53,9 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Lib\ElementOption.cs" />
     <Compile Include="Lib\EventBinding.cs" />
     <Compile Include="Lib\EventToCommand.cs" />
     <Compile Include="Lib\RevitEvent.cs" />
+    <Compile Include="LogicElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\FrmMain.xaml.cs">
       <DependentUpon>FrmMain.xaml</DependentUpon>

@@ -4,7 +4,7 @@
 library
 C#
 .cs
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\
+D:\API\BindingWPF\BindingWPF\obj\Debug\
 BindingWPF
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 1-731514963
 
-9-517442089
-16628895992
+11-52663964
+16-1480008536
 View\FrmMain.xaml;
 
 False

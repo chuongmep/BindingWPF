@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
@@ -11,52 +13,105 @@ namespace BindingWPF
 {
     public class ViewModel : ViewModelBase
     {
-        private RevitEvent _revitEvent;
-        ExternalEvent _myExternalEvent;
-
-        public Document Doc;
-        public UIDocument UiDoc;
-        public RelayCommand PickCommand { get; set; }
-
-        public RelayCommand RemoveCommand { get; set; }
 
         public ViewModel(UIDocument uidoc)
         {
             UiDoc = uidoc;
             Doc = uidoc.Document;
-            _revitEvent = new RevitEvent();
-            _myExternalEvent = ExternalEvent.Create(_revitEvent);
+            RevitEvent revitEvent = new RevitEvent();
+            this._event = ExternalEvent.Create(revitEvent);
+            
 
-            PickCommand = new RelayCommand(x => PickElement(), x => true);
-            RemoveCommand = new RelayCommand(x=>RemoveElement(),x=>true);
         }
 
-        public void PickElement()
+
+        RevitEvent revitEvent = new RevitEvent();
+        LogicElement logicElement = new LogicElement();
+        public ExternalEvent _event { get; }
+
+        public Document Doc;
+        public UIDocument UiDoc;
+
+        private RelayCommand close;
+
+        public RelayCommand Close
         {
-            Reference r = UiDoc.Selection.PickObject(ObjectType.Element, "Pick a element");
-            Element element = Doc.GetElement(r);
-            TaskDialog.Show("Info", element.Name);
+            get
+            {
+                return close ??
+                       (close = new RelayCommand(obj =>
+                           {
+                               try
+                               {
+                                   Window window = obj as Window;
+                                   window.Close();
+                               }
+                               catch (Exception ex)
+                               {
+                                   MessageBox.Show(ex.Message);
+                               }
+                           },
+                           obj => true));
+            }
+        }
+
+        private RelayCommand _pickCommand;
+        public RelayCommand PickCommand {  get
+        {
+            return _pickCommand ??
+                   (_pickCommand = new RelayCommand(obj =>
+                       {
+                           try
+                           {
+                               //Do some thing code
+                               
+                             
+                               revitEvent.Option = Option.Pick;
+                               logicElement.PickElement(UiDoc);
+
+                           }
+                           catch (Exception ex)
+                           {
+                               MessageBox.Show(ex.Message);
+                           }
+
+                           _event.Raise();
+                       },
+                       obj => true));
+        } }
+
+        private RelayCommand _removeCommand;
+
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                return _removeCommand ??
+                       (_removeCommand = new RelayCommand(obj =>
+                           {
+                               try
+                               {
+                                   // Window window = obj as Window;
+                                   // window.Close();
+                                   //Do some thing code
+                                   revitEvent.Option = Option.Remove;
+
+                                   logicElement.RemoveElement(UiDoc, Doc);
+                               }
+                               catch (Exception ex)
+                               {
+                                   MessageBox.Show(ex.Message);
+                               }
+
+                               _event.Raise();
+                           },
+                           obj => true));
+            }
             
         }
 
-        public void RemoveElement()
-        {
-            Reference r = UiDoc.Selection.PickObject(ObjectType.Element, "Pick element to delete");
-            Element element = Doc.GetElement(r.ElementId);
-            try
-            {
-                using (Transaction tran = new Transaction(Doc))
-                {
-                    tran.Start("Start");
-                    element.Pinned = false;
-                    Doc.Delete(element.Id);
-                    tran.Commit();
-                }
-            }
-            catch (Exception )
-            {
-               throw new Exception("Can't Delete Element");
-            }
-        }
+
+       
+
     }
 }

@@ -2,7 +2,6 @@ F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.dll
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\bin\Debug\BindingWPF.pdb
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.g.cs
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.cache
-F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF_MarkupCompile.lref
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\View\FrmMain.baml
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.g.resources
 F:\revit\2. Revit API\4.Project\BindingWPF\BindingWPF\obj\Debug\BindingWPF.csproj.CoreCompileInputs.cache

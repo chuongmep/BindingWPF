@@ -21,7 +21,7 @@ namespace BindingWPF
     /// <summary>
     /// Interaction logic for FrmMain.xaml
     /// </summary>
-    public partial class FrmMain : Window
+    public partial class FrmMain
     {
         
         public FrmMain()
@@ -29,6 +29,8 @@ namespace BindingWPF
             var id = Thread.CurrentThread.ManagedThreadId;
             InitializeComponent();
             Topmost = true;
+            WindowStartupLocation = WindowStartupLocation.Manual;
+            ResizeMode = ResizeMode.NoResize;
         }
 
         public FrmMain(ViewModel viewModel) : this()

@@ -7,6 +7,7 @@
              Name="Window"
              mc:Ignorable="d"
              Topmost="True"
+             WindowStartupLocation="CenterScreen"
              ResizeMode="NoResize"
              Width="300"
              Title="WPFBindingCommand"
@@ -30,15 +31,13 @@
                     Background="DeepSkyBlue"
                     Content="Pick Element"
                     Command="{Binding PickCommand}"
-                    CommandParameter="{Binding ElementName=Window}"
-            />
+                    CommandParameter="{Binding ElementName=Window}" />
             <Button Grid.Row="1"
-                                                                                                        FontSize="25"
-                                                                                                        Background="DeepSkyBlue"
-                                                                                                        Content="Remove Element"
-                                                                                                        Command="{Binding RemoveCommand}"
-                                                                                                        CommandParameter="{Binding ElementName=Window}"
-                                                                                                />
+                    FontSize="25"
+                    Background="DeepSkyBlue"
+                    Content="Remove Element"
+                    Command="{Binding RemoveCommand}"
+                    />
             <Button Grid.Row="1"
                     FontSize="25"
                     Background="DeepSkyBlue"
@@ -56,8 +55,8 @@
             <Button Grid.Row="1"
                     FontSize="25"
                     Background="DeepSkyBlue"
-                    Content="Cancel"
-                    Command="{Binding Close}" 
+                    Content="Close"
+                    Command="{Binding CloseCommand}" 
                     CommandParameter="{Binding ElementName=Window}"/>
 
         </StackPanel>

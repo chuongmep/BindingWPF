@@ -5,113 +5,80 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.Exceptions;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using ArgumentException = System.ArgumentException;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace BindingWPF
 {
+    
+
     public class ViewModel : ViewModelBase
     {
-
-        public ViewModel(UIDocument uidoc)
+        private readonly RevitTask _revitTask = new RevitTask();
+        public ViewModel()
         {
-            UiDoc = uidoc;
-            Doc = uidoc.Document;
-            RevitEvent revitEvent = new RevitEvent();
-            this._event = ExternalEvent.Create(revitEvent);
-            
+            RemoveCommand = new RelayCommand(Remove);
+            CloseCommand = new RelayCommand(CloseAction);
 
         }
 
+        public ICommand PickCommand { get; set; }
 
-        RevitEvent revitEvent = new RevitEvent();
-        LogicElement logicElement = new LogicElement();
-        public ExternalEvent _event { get; }
+        public ICommand RemoveCommand { get; set; }
 
-        public Document Doc;
-        public UIDocument UiDoc;
+        public ICommand MoveCommand { get; set; }
 
-        private RelayCommand close;
+        public ICommand CloseCommand { get; set; }
 
-        public RelayCommand Close
+        void CloseAction()
         {
-            get
+            MessageBox.Show("Test");
+            try
             {
-                return close ??
-                       (close = new RelayCommand(obj =>
-                           {
-                               try
-                               {
-                                   Window window = obj as Window;
-                                   window.Close();
-                               }
-                               catch (Exception ex)
-                               {
-                                   MessageBox.Show(ex.Message);
-                               }
-                           },
-                           obj => true));
+                Window Window = new Window();
+                Window.Close();
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException(e.Message);
             }
         }
 
-        private RelayCommand _pickCommand;
-        public RelayCommand PickCommand {  get
+        private async void Remove()
         {
-            return _pickCommand ??
-                   (_pickCommand = new RelayCommand(obj =>
-                       {
-                           try
-                           {
-                               //Do some thing code
-                               
-                             
-                               revitEvent.Option = Option.Pick;
-                               logicElement.PickElement(UiDoc);
 
-                           }
-                           catch (Exception ex)
-                           {
-                               MessageBox.Show(ex.Message);
-                           }
-
-                           _event.Raise();
-                       },
-                       obj => true));
-        } }
-
-        private RelayCommand _removeCommand;
-
-        public RelayCommand RemoveCommand
-        {
-            get
-            {
-                return _removeCommand ??
-                       (_removeCommand = new RelayCommand(obj =>
-                           {
-                               try
-                               {
-                                   // Window window = obj as Window;
-                                   // window.Close();
-                                   //Do some thing code
-                                   revitEvent.Option = Option.Remove;
-
-                                   logicElement.RemoveElement(UiDoc, Doc);
-                               }
-                               catch (Exception ex)
-                               {
-                                   MessageBox.Show(ex.Message);
-                               }
-
-                               _event.Raise();
-                           },
-                           obj => true));
-            }
-            
+            await _revitTask.Run((uiApp) =>
+                RemoveElement(
+                    uiApp.ActiveUIDocument));
         }
 
+        private void RemoveElement(UIDocument uidoc)
+        {
+            Document doc = uidoc.Document;
+            Reference r = uidoc.Selection.PickObject(ObjectType.Element, "Pick element to delete");
+            Element element = doc.GetElement(r.ElementId);
+            try
+            {
+                using (Transaction tran = new Transaction(doc))
+                {
+                    tran.Start("Change");
+                    element.Pinned = false;
+                    doc.Delete(element.Id);
 
-       
+                    tran.Commit();
+
+                }
+            }
+            catch (Exception e)
+            {
+                TaskDialog.Show("Info", e.ToString());
+            }
+        }
 
     }
 }

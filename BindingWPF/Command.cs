@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autodesk.Revit.Attributes;
@@ -23,13 +25,11 @@ namespace BindingWPF
             Document doc = uidoc.Document;
             try
             {
-                FrmMain window = new FrmMain();
-                {
-                    window.DataContext = new ViewModel(uidoc);
-                    window.Topmost = true;
-                };
+                int id = Thread.CurrentThread.ManagedThreadId;
+                ViewModel vm = new ViewModel();
+                FrmMain window = new FrmMain(vm);
                 window.Show();
-						
+
                 return Result.Succeeded;
             }
 
@@ -37,12 +37,9 @@ namespace BindingWPF
             {
                 return Result.Cancelled;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                return Result.Failed;
-            }
+            
 
         }
+
     }
 }

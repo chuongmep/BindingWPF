@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,11 +23,18 @@ namespace BindingWPF
     /// </summary>
     public partial class FrmMain : Window
     {
-       
+        
         public FrmMain()
         {
+            var id = Thread.CurrentThread.ManagedThreadId;
             InitializeComponent();
-          
+            Topmost = true;
+        }
+
+        public FrmMain(ViewModel viewModel) : this()
+        {
+            var id = Thread.CurrentThread.ManagedThreadId;
+            DataContext = viewModel;
         }
     }
 }

@@ -25,7 +25,6 @@ namespace BindingWPF
             Document doc = uidoc.Document;
             try
             {
-                int id = Thread.CurrentThread.ManagedThreadId;
                 ViewModel vm = new ViewModel();
                 FrmMain window = new FrmMain(vm);
                 window.Show();

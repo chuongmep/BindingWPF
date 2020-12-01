@@ -6,26 +6,37 @@ using System.Windows.Input;
 namespace BindingWPF
 {
     public class RelayCommand : ICommand
-    {private readonly Action _act;
+    {
+        readonly Action _execute;
+        readonly Func<bool> _canExecute;
 
-        public RelayCommand(Action act)
+        public RelayCommand(Action execute, Func<bool> canExecute)
         {
-            _act = act;
+            _execute = execute ?? throw new NullReferenceException("execute");
+            _canExecute = canExecute;
+        }
+
+        public RelayCommand(Action execute) : this(execute, null)
+        {
 
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _canExecute == null ? true : _canExecute();
         }
 
         public void Execute(object parameter)
         {
-            _act();
+            _execute.Invoke();
         }
-        
+
 
     }
 

@@ -24,21 +24,18 @@ namespace BindingWPF
         readonly RevitTask _revitTask = new RevitTask();
         public ViewModel()
         {
-            CloseCommand = new CloseCommand();
-            PickCommand = new RelayCommand(Pickelement);
-            RemoveCommand = new RelayCommand(Remove);
-            MoveCommand = new RelayCommand(Moveelement);
+           
 
 
         }
 
-        public CloseCommand  CloseCommand { get; set; }
+        public CloseCommand  CloseCommand =>new CloseCommand();
 
-        public ICommand PickCommand { get; set; }
+        public ICommand PickCommand => new RelayCommand(Pickelement);
 
-        public ICommand RemoveCommand { get; set; }
+        public ICommand RemoveCommand => new RelayCommand(Remove);
 
-        public ICommand MoveCommand { get; set; }
+        public ICommand MoveCommand => new RelayCommand(Moveelement);
 
 
         async void Remove()
@@ -106,7 +103,7 @@ namespace BindingWPF
             }
             catch (Exception Exception)
             {
-                MessageBox.Show(Exception.ToString());
+               
             }
            
             
@@ -114,14 +111,24 @@ namespace BindingWPF
 
         static void MoveElement(UIDocument uidoc)
         {
-            Document doc = uidoc.Document;
-            Reference r = uidoc.Selection.PickObject(ObjectType.Element, "Please Pick a Element");
-            Element Element = doc.GetElement(r);
-            using (Transaction tran = new Transaction(doc))
+            try
             {
-                tran.Start("Move");
-                ElementTransformUtils.MoveElement(doc,Element.Id,new XYZ(10,10,0));
-                tran.Commit();
+                while (true)
+                {
+                    Document doc = uidoc.Document;
+                    Reference r = uidoc.Selection.PickObject(ObjectType.Element, "Please Pick a Element");
+                    Element Element = doc.GetElement(r);
+                    using (Transaction tran = new Transaction(doc))
+                    {
+                        tran.Start("Move");
+                        ElementTransformUtils.MoveElement(doc,Element.Id,new XYZ(10,10,0));
+                        tran.Commit();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+               
             }
             
         }

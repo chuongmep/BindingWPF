@@ -26,7 +26,6 @@ namespace BindingWPF
         
         public FrmMain()
         {
-            var id = Thread.CurrentThread.ManagedThreadId;
             InitializeComponent();
             Topmost = true;
             WindowStartupLocation = WindowStartupLocation.Manual;
@@ -35,8 +34,7 @@ namespace BindingWPF
 
         public FrmMain(ViewModel viewModel) : this()
         {
-            var id = Thread.CurrentThread.ManagedThreadId;
-            DataContext = viewModel;
+           this.DataContext = viewModel;
         }
     }
 }

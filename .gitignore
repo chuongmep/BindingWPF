@@ -1,0 +1,14 @@
+*.cache
+*.suo
+*.iref
+obj
+Debug
+*.pdb
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.pdb
+*.dll
+*.g.i.cs
+*.g.cs
